@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import PersonalInfo from "./sections/personalInfo";
+import Experience from "./sections/experience";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
           <h1>Christoffer Iversen Junge</h1>
         </div>
         <PersonalInfo />
+        <Experience />
       </main>
       <footer className={styles.footer}>
         <a
