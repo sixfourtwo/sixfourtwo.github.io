@@ -164,5 +164,21 @@ a.secondary {
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
+    transition: 0.2s;
+  }
+
+  .logo:hover {
+    filter: invert() brightness(150%);
+    transition: 0.5s;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .logo {
+    transition: 0.2s;
+  } 
+  .logo:hover {
+    filter: brightness(200%);
+    transition: 0.5s;
   }
 }
