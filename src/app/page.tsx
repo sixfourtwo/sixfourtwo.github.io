@@ -20,6 +20,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <Image
+            className={styles.logo}
             aria-hidden
             src="/github-mark.svg"
             alt="Go to Chris' github profile"
