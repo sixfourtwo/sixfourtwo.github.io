@@ -1,4 +1,3 @@
-
 export default function PersonalInfo() {
     const birthDate = new Date(1992, 11, 7);
     const now = new Date();

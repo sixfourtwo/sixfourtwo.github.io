@@ -13,8 +13,18 @@ type Metadata = {
     short: string
 }
 
+type MetadataFormatted = {
+    image?: string
+    currentjob: string
+    workplace: string
+    title: string
+    from: Date
+    to: Date
+    short: string
+}
+
 type MDXData = {
-    metadata: Metadata,
+    metadata: MetadataFormatted,
     slug: string,
     content: string
 }
@@ -31,10 +41,20 @@ function parseFrontmatter(fileContent: string) {
         let [key, ...valueArr] = line.split(': ')
         let value = valueArr.join(': ').trim()
         value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
-        metadata[key.trim() as keyof Metadata] = value
+        metadata[key.trim() as keyof Metadata] = value;
     })
 
-    return { metadata: metadata as Metadata, content }
+    let formatted: MetadataFormatted = {
+        image: metadata.image,
+        currentjob: metadata.currentjob!,
+        short: metadata.short!,
+        title: metadata.title!,
+        workplace: metadata.workplace!,
+        from: new Date(metadata.from!),
+        to: new Date(metadata.to!)
+    }
+
+    return { metadata: formatted as MetadataFormatted, content }
 }
 
 function getMDXFiles(dir: string) {

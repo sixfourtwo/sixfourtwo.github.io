@@ -1,4 +1,5 @@
 import { getExperience } from "../contentUtil/contentReader";
+import { toHumanReadableTimespan, toHumanReadableMonthAndYear } from "../helpers/dateHelper";
 
 export default function Experience() {
     const experience = getExperience();
@@ -8,7 +9,7 @@ export default function Experience() {
             <div key={exp.slug}>
                 <h2>{exp.metadata.workplace}</h2>
                 <h3>{exp.metadata.title}</h3>
-                <p>{exp.metadata.from} to {exp.metadata.to}</p>
+                <p>{toHumanReadableMonthAndYear(exp.metadata.from)} - {toHumanReadableMonthAndYear(exp.metadata.to)} ({toHumanReadableTimespan(exp.metadata.from, exp.metadata.to)})</p>
                 <p>{exp.metadata.short}</p>
             </div>
         );

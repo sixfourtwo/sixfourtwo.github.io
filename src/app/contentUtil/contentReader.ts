@@ -8,5 +8,5 @@ const paths = {
 
 export function getExperience() {
     return getMDXData(path.join(process.cwd(), paths.base, paths.experience))
-        .sort((a, b) => new Date(b.metadata.from).getTime() - new Date(a.metadata.from).getTime())
+        .sort((a, b) => b.metadata.from.getTime() - a.metadata.from.getTime())
 }
