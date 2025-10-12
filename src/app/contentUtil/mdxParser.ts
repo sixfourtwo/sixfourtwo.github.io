@@ -23,7 +23,7 @@ type MetadataFormatted = {
     short: string
 }
 
-type MDXData = {
+export type MDXData = {
     metadata: MetadataFormatted,
     slug: string,
     content: string
