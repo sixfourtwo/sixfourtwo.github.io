@@ -1,3 +1,4 @@
+import Header from "../components/header";
 import { getExperience } from "../contentUtil/contentReader";
 import { toHumanReadableTimespan, toHumanReadableMonthAndYear } from "../helpers/dateHelper";
 
@@ -17,7 +18,7 @@ export default function Experience() {
 
     return (
         <div>
-            <h1>Experience</h1>
+            <Header>Experience</Header>
             {experienceComponents}
         </div>
     );

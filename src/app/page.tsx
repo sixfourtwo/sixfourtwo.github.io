@@ -2,17 +2,13 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import PersonalInfo from "./sections/personalInfo";
 import Experience from "./sections/experience";
-import { Geist, Zain, Jacquard_12} from "next/font/google";
-
-const jacq = Jacquard_12({weight: "400", subsets: ["latin"]});
+import Header from "./components/header";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <div>
-          <h1 className={jacq.className}>Christoffer Iversen Junge</h1>
-        </div>
+        <Header>Christoffer Iversen Junge</Header>
         <PersonalInfo />
         <Experience />
       </main>
