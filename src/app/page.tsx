@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Header>Christoffer Iversen Junge</Header>
+        <Header center>Christoffer Iversen Junge</Header>
         <PersonalInfo />
         <Experience />
       </main>

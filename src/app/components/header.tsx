@@ -1,15 +1,16 @@
 import styles from "./header.module.css";
-import { Jacquard_12} from "next/font/google";
+import { Staatliches} from "next/font/google";
 import { ReactNode } from "react";
 
-const jacq = Jacquard_12({weight: "400", subsets: ["latin"]});
+const jacq = Staatliches({subsets: ["latin"], weight: "400"});
 
 interface headerProps {
     children: ReactNode
+    center?: boolean
 }
 
 export default function Header(props: headerProps) { 
-    return (<div className={`${jacq.className} ${styles.header}`}>
+    return (<div className={`${jacq.className} ${styles.header}`} style={props.center ? {textAlign: "center", fontSize: "4rem"} : {}}>
         {props.children}
     </div>);
 }
