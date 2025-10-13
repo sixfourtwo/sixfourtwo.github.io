@@ -4,6 +4,8 @@ import { toHumanReadableTimespan, toHumanReadableMonthAndYear } from "../helpers
 
 export default function Experience() {
     const experience = getExperience();
+    const totalTo = new Date();
+    const totalFrom = experience[experience.length - 1].from;
 
     const experienceComponents = experience.map((expGroup) => {
         
@@ -27,6 +29,7 @@ export default function Experience() {
     return (
         <div>
             <Header>Experience</Header>
+            <p>{toHumanReadableTimespan(totalFrom, totalTo)}</p>
             {experienceComponents}
         </div>
     );
