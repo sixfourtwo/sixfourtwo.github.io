@@ -1,6 +1,6 @@
 export function toHumanReadableTimespan(from: Date, to: Date){
     let yearDif = to.getFullYear() - from.getFullYear();
-    let monthDif = to.getMonth() - from.getMonth();
+    let monthDif = (to.getMonth() - from.getMonth()) +1; // include current month
 
     if(yearDif === 0 && monthDif === 0) { // Within this month!
         let currentDay = new Date().getDay() + 1;
