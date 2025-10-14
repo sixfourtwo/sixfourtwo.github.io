@@ -1,4 +1,5 @@
 import Header from "../components/header";
+import styles from "./experience.module.css";
 import { getExperience } from "../contentUtil/contentReader";
 import { toHumanReadableTimespan, toHumanReadableMonthAndYear } from "../helpers/dateHelper";
 
@@ -10,26 +11,34 @@ export default function Experience() {
     const experienceComponents = experience.map((expGroup) => {
         
         return (
-            <div key={expGroup.slug}>
-                <h2>{expGroup.workplace}</h2>
-                <p>{toHumanReadableTimespan(expGroup.from, expGroup.to)}</p>
-                {expGroup.experiences.map((exp) => {
-                    return (
-                        <div key={exp.slug}>
-                            <h3>{exp.metadata.title}</h3>
-                            <p>{toHumanReadableMonthAndYear(exp.metadata.from)} - {toHumanReadableMonthAndYear(exp.metadata.to)} ({toHumanReadableTimespan(exp.metadata.from, exp.metadata.to)})</p>
-                            <p>{exp.metadata.short}</p>
-                        </div>
-                    );
-                })}
+            <div key={expGroup.slug} className={styles.experienceGroup}>
+                <div className={styles.workplace}>
+                    <h2>{expGroup.workplace}</h2>
+                    <p className={styles.timeSpent}>{toHumanReadableTimespan(expGroup.from, expGroup.to)}</p>
+                </div>
+                <div className={styles.experience}>
+                    {expGroup.experiences.map((exp) => {
+                        return (
+                            <div key={exp.slug} className={styles.experience}>
+                                <div className={styles.workplace}>
+                                    <h3>{exp.metadata.title}</h3>
+                                    <p className={styles.timeSpent}>{toHumanReadableMonthAndYear(exp.metadata.from)} - {exp.metadata.currentjob ? "Today" : toHumanReadableMonthAndYear(exp.metadata.to)} ({toHumanReadableTimespan(exp.metadata.from, (exp.metadata.currentjob ? new Date() : exp.metadata.to))})</p>
+                                </div>
+                                <p>{exp.metadata.short}</p>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         );
     });
 
     return (
         <div>
-            <Header>Experience</Header>
-            <p>{toHumanReadableTimespan(totalFrom, totalTo)}</p>
+            <div className={styles.workplace}>
+                <Header>Experience</Header>
+                <p style={{alignSelf: "center"}} className={styles.timeSpent}>{toHumanReadableTimespan(totalFrom, totalTo)}</p>
+            </div>
             {experienceComponents}
         </div>
     );

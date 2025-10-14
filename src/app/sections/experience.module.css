@@ -1,0 +1,28 @@
+.experienceGroup {
+    margin-bottom: 20px;
+}
+
+.workplace {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    
+}
+
+.experience {
+    outline: 1px;
+    outline-width: 1px;
+    outline-color: gray;
+    outline-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.timeSpent {
+    font-size: small;
+    font-style: bold;
+    color: gray;
+    margin-left: 1em;
+}
