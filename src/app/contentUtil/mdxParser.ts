@@ -13,9 +13,9 @@ type Metadata = {
     short: string
 }
 
-type MetadataFormatted = {
+type MetadataJobFormatted = {
     image?: string
-    currentjob: string
+    currentjob: boolean
     workplace: string
     title: string
     from: Date
@@ -24,7 +24,7 @@ type MetadataFormatted = {
 }
 
 export type MDXData = {
-    metadata: MetadataFormatted,
+    metadata: MetadataJobFormatted,
     slug: string,
     content: string
 }
@@ -44,9 +44,9 @@ function parseFrontmatter(fileContent: string) {
         metadata[key.trim() as keyof Metadata] = value;
     })
 
-    let formatted: MetadataFormatted = {
+    let formatted: MetadataJobFormatted = {
         image: metadata.image,
-        currentjob: metadata.currentjob!,
+        currentjob: metadata.currentjob! === 'true',
         short: metadata.short!,
         title: metadata.title!,
         workplace: metadata.workplace!,
@@ -54,7 +54,7 @@ function parseFrontmatter(fileContent: string) {
         to: new Date(metadata.to!)
     }
 
-    return { metadata: formatted as MetadataFormatted, content }
+    return { metadata: formatted as MetadataJobFormatted, content }
 }
 
 function getMDXFiles(dir: string) {
