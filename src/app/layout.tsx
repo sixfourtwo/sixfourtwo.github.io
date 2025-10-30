@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={scp.className}>
+      <meta name="apple-mobile-web-app-title" content="jnge" />
       <body className={scp.className}>
         {children}
       </body>
